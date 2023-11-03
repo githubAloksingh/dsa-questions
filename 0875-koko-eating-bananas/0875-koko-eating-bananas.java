@@ -34,7 +34,7 @@ class Solution {
             int totalH=0;
             int n=piles.length;
             for(int i=0;i<n;i++){
-                totalH+=Math.ceil((double)(piles[i])/(double)(h));
+                totalH+=Math.ceil((double)piles[i]/(double)h);
             }
             return totalH;
             
