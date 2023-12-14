@@ -12,24 +12,14 @@ class Solution {
             for (int j = 0; j < n; j++) {
                 if (grid[i][j] == 1) {
                     onesRow[i]++;
-                } else {
-                    zerosRow[i]++;
-                }
-            }
-        }
-
-       
-        for (int j = 0; j < n; j++) {
-            for (int i = 0; i < m; i++) {
-                if (grid[i][j] == 1) {
                     onesCol[j]++;
                 } else {
+                    zerosRow[i]++;
                     zerosCol[j]++;
                 }
+                
             }
         }
-
-        
         int[][] diff = new int[m][n];
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
