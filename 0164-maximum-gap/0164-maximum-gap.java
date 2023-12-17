@@ -10,7 +10,7 @@ class Solution {
         for(int i=0;i<n-1;i++){
             diff=nums[i+1]-nums[i];
             maxi=Math.max(maxi,diff);
-            diff=0;
+            //diff=0;
             
         }
         return maxi;
