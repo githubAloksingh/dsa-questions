@@ -2,6 +2,7 @@ class Solution {
     public List<List<Integer>> findWinners(int[][] matches) {
         Map<Integer, Integer> losses = new HashMap<>();
         Map<Integer, Integer> winner = new HashMap<>();
+        int count=0;
 
         for (int[] match : matches) {
             losses.put(match[1], losses.getOrDefault(match[1], 0) + 1);
@@ -17,10 +18,16 @@ class Solution {
                 int numLosses = losses.get(i);
                 if (numLosses == 1) {
                     oneLoss.add(i);
+                    count++;
                 }
             }
             else if(winner.containsKey(i) && !(losses.containsKey(i))){
                 noLoss.add(i);
+                count++;
+            }
+            if(count==(losses.size()+winner.size())){
+                break;
+                
             }
             
         }
