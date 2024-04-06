@@ -13,7 +13,7 @@ class Solution:
             val=(n+1)//2
             return arr[val-1]
         else:
-            val=(arr[n//2-1]+arr[n//2])/2
+            val = (arr[n//2-1]+arr[n//2])/2
             return val
                 
     
