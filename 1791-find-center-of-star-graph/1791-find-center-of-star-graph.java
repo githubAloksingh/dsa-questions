@@ -15,11 +15,12 @@ class Solution {
         int mostFrequent = -1;
         int maxFrequency = -1;
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (entry.getValue() > maxFrequency) {
-                maxFrequency = entry.getValue();
-                mostFrequent = entry.getKey();
+            int value=entry.getValue();
+            if(value==edges.length){
+                return entry.getKey();
             }
         }
-        return mostFrequent;
-    }
+            return -1;
+    
+}
 }
