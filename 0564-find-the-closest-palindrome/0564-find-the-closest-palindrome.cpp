@@ -1,9 +1,8 @@
 class Solution {
 public:
-    // This function generates a palindrome by mirroring the first half.
     long func(long firstHalf, bool isEven) {
         long resultNum = firstHalf;
-        if (!isEven) {  // No need to compare with `false`, just use `!isEven`.
+        if (!isEven) {
             firstHalf /= 10;
         }
         while (firstHalf > 0) {
@@ -18,17 +17,17 @@ public:
         int L = n.size();
         int mid = L / 2;
         int firstHalfLength = (L % 2 == 0) ? mid : (mid + 1);
-        long firstHalf = stol(n.substr(0, firstHalfLength)); // Corrected the `firstHalfLength` typo
+        long firstHalf = stol(n.substr(0, firstHalfLength));
         
         vector<long> possibleResults;
-        possibleResults.push_back(func(firstHalf, L % 2 == 0));       // Same palindrome.
-        possibleResults.push_back(func(firstHalf + 1, L % 2 == 0));   // Increment the first half.
-        possibleResults.push_back(func(firstHalf - 1, L % 2 == 0));   // Decrement the first half.
-        possibleResults.push_back((long)pow(10, L - 1) - 1);          // Smallest number with L-1 digits, e.g., 999 for L=3.
-        possibleResults.push_back((long)pow(10, L) + 1);              // Smallest number with L+1 digits, e.g., 10001 for L=5.
+        possibleResults.push_back(func(firstHalf, L % 2 == 0));
+        possibleResults.push_back(func(firstHalf + 1, L % 2 == 0)); 
+        possibleResults.push_back(func(firstHalf - 1, L % 2 == 0));
+        possibleResults.push_back((long)pow(10, L - 1) - 1); 
+        possibleResults.push_back((long)pow(10, L) + 1);        
 
         long diff = LONG_MAX;
-        long result = -1; // Use a placeholder different from INT_MAX.
+        long result = -1;
         long originalNum = stol(n);
         
         for (long num : possibleResults) {
