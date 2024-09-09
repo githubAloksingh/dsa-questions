@@ -15,56 +15,18 @@
  */
 class Solution {
     public boolean isBalanced(TreeNode root) {
-        if(root==null){
-            return true;
-        }
-        int lh=height(root.left);
-        int rh=height(root.right);
-        if(Math.abs(rh-lh)>1){
-            return false;
-        }
-        return isBalanced(root.left) && isBalanced(root.right);
+        return dfsHeight(root)!=-1;
     }
-    private int height(TreeNode root){
+    private int dfsHeight(TreeNode root){
         if(root==null){
             return 0;
         }
-          int left=height(root.left);
-          int right=height(root.right);
-          return 1+Math.max(left,right);
+        int lh=dfsHeight(root.left);
+        if(lh==-1) return -1;
+        int rh = dfsHeight(root.right);
+        if(rh==-1) return -1;
+        if(Math.abs(rh-lh)>1) return -1;
+        return 1+Math.max(lh,rh);
+        
     }
-    
 }
-
-
-
-
-
-
-
-
-// class Solution {
-//     public boolean isBalanced(TreeNode root) {
-//         return solve(root);
-//     }
-//     private boolean solve(TreeNode root){
-//         if(root==null){
-//             return true;
-//         }
-//         int lh=height(root.left);
-//         int rh=height(root.right);
-//         if(Math.abs(rh-lh)>1){
-//             return false;
-//         }
-//         return solve(root.left) && solve(root.right);
-//     }
-//     private int height(TreeNode root){
-//         if(root==null){
-//             return 0;
-//         }
-//           int left=height(root.left);
-//           int right=height(root.right);
-//           return 1+Math.max(left,right);
-//     }
-    
-// }
