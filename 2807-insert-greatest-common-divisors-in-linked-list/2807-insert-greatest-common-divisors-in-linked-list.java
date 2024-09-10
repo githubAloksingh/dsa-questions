@@ -9,31 +9,30 @@
  * }
  */
 class Solution {
-    private int gcd(int a, int b){
-            if(b==0){
-                return a;
-            }
-           return gcd(b,a%b);
+    private int gcd(int a , int b){
+        if(b==0){
+            return a;
         }
+        return gcd(b,a%b);
+    }
+    private void insertGcd(ListNode curr){
+        if(curr== null ||curr.next==null){
+            return ;
+        }
+        int gcdVal=gcd(curr.val, curr.next.val);
+        ListNode gcdNode = new ListNode(gcdVal);
+        gcdNode.next=curr.next;
+        curr.next=gcdNode;
+        insertGcd(curr.next.next);
+        
+    }
+    
+   
     public ListNode insertGreatestCommonDivisors(ListNode head) {
-        
-            if(head==null ||head.next==null){
-                return head;
-            }
-            ListNode currNode=head;
-            ListNode nextNode=head.next;
-        
-        while(currNode!=null && currNode.next!=null){
-            int gcdVal=gcd(currNode.val, currNode.next.val);
-            ListNode gcdNode = new ListNode(gcdVal);
-            currNode.next=gcdNode;
-            gcdNode.next=nextNode;
-            currNode=nextNode;
-            nextNode=nextNode.next;
-            
-            
-        }
+        insertGcd(head);
         return head;
+        
+    
     }
 }
 
@@ -43,4 +42,4 @@ class Solution {
 
 
 
-            
+
