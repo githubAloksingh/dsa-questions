@@ -1,20 +1,15 @@
+//Brute Force
 class Solution {
     public boolean canConstruct(String ransomNote, String magazine) {
-        HashMap<Character, Integer> magazineCount = new HashMap<>();
-        for(char ch: magazine.toCharArray()){
-            magazineCount.put(ch,magazineCount.getOrDefault(ch,0)+1);
-        }
+        StringBuilder sb = new StringBuilder(magazine);
         for(char ch: ransomNote.toCharArray()){
-            if(!magazineCount.containsKey(ch)|| magazineCount.get(ch)<=0){
+            int index = sb.indexOf(String.valueOf(ch));
+            if(index==-1){
                 return false;
-
             }
-            magazineCount.put(ch,magazineCount.get(ch)-1);
-            
+            sb.deleteCharAt(index);
         }
         return true;
         
     }
 }
-
-
