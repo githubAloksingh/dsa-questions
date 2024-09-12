@@ -1,3 +1,4 @@
+//Brute Force Approach
 class Solution {
     public String convert(String s, int numRows) {
         if(numRows==1 ||numRows>=s.length()){
@@ -30,4 +31,26 @@ class Solution {
     }
 }
 
+
+// Better Approach
+// public String convert(String s, int numRows) {
+//     if (numRows == 1 || numRows >= s.length()) {
+//         return s;
+//     }
+
+//     StringBuilder result = new StringBuilder();
+//     int index = 0, step = 1;
+
+//     for (char c : s.toCharArray()) {
+//         result.append(c);
+//         if (index == 0) {
+//             step = 1;
+//         } else if (index == numRows - 1) {
+//             step = -1;
+//         }
+//         index += step;
+//     }
+
+//     return result.toString();
+// }
 
