@@ -13,29 +13,44 @@
  *     }
  * }
  */
-
-
 class Solution {
     public boolean hasPathSum(TreeNode root, int targetSum) {
-        return getPath(root, targetSum, 0);
+       return getpath(root,targetSum,0);
+        
     }
-
-    private boolean getPath(TreeNode root, int targetSum, int sum) {
-        if (root == null) {
+    private boolean getpath(TreeNode root, int targetSum,int sum){
+        if(root == null){
             return false;
         }
-
-        sum += root.val;
-
-        // Check if we are at a leaf node and the sum equals targetSum
-        if (root.left == null && root.right == null) {
-            return sum == targetSum;
+        sum+=root.val;
+        if( root.left==null && root.right==null &&sum==targetSum){
+            return true;
         }
-
-        // Recursively check the left and right subtree
-        return getPath(root.left, targetSum, sum) || getPath(root.right, targetSum, sum);
+       return getpath(root.left,targetSum,sum)|| getpath(root.right,targetSum,sum);
     }
 }
+
+// class Solution {
+//     public boolean hasPathSum(TreeNode root, int targetSum) {
+//         return getPath(root, targetSum, 0);
+//     }
+
+//     private boolean getPath(TreeNode root, int targetSum, int sum) {
+//         if (root == null) {
+//             return false;
+//         }
+
+//         sum += root.val;
+
+//         // Check if we are at a leaf node and the sum equals targetSum
+//         if (root.left == null && root.right == null) {
+//             return sum == targetSum;
+//         }
+
+//         // Recursively check the left and right subtree
+//         return getPath(root.left, targetSum, sum) || getPath(root.right, targetSum, sum);
+//     }
+// }
 
 
 
