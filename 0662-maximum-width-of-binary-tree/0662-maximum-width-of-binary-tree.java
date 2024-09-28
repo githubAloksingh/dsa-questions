@@ -18,17 +18,20 @@ class Solution {
         int maxi=0;
         Queue<Pair<TreeNode,Integer>> queue = new LinkedList<>();
         queue.offer(new Pair<>(root,0));
+        
         while(!queue.isEmpty()){
             int n=queue.size();
-            int left = queue.peek().getValue();
-           int right=left;
+           int left=0;
+            int right=0;
+            int minIndex=queue.peek().getValue();
             
            
             for(int i=0;i<n;i++){
                 Pair<TreeNode, Integer> current = queue.poll();
                 TreeNode node = current.getKey();
-                int idx = current.getValue();
-                right=idx;
+                int idx = current.getValue()-minIndex;
+                if(i==0) left=idx;
+                if(i==n-1) right=idx;
                 if(node.left!=null){
                     queue.offer(new Pair<>(node.left,idx*2+1));
                     
