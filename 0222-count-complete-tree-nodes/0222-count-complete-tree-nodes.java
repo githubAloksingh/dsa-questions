@@ -14,17 +14,33 @@
  * }
  */
 class Solution {
-    public int countNodes(TreeNode root) {
-        return check(root);
-        
-        
-    }
-    private int check(TreeNode root){
-        if(root==null){
-            return 0;
+    private int lh(TreeNode root){
+        if(root==null) return 0;
+        int lh=0;
+        TreeNode temp=root;
+        while(temp!=null){
+            temp=temp.left;
+            lh++;
         }
-        
-       return  1+check(root.left)
-       + check(root.right);
+        return lh;
+    }
+     private int rh(TreeNode root){
+        if(root==null) return 0;
+        int rh=0;
+        TreeNode temp=root;
+        while(temp!=null){
+            temp=temp.right;
+            rh++;
+        }
+        return rh;
+    }
+    public int countNodes(TreeNode root) {
+        if(root==null) return 0;
+        int l=lh(root);
+        int r=rh(root);
+        if(l==r) return (1 << l) - 1;
+        return 1+countNodes(root.left)+countNodes(root.right);
     }
 }
+
+
