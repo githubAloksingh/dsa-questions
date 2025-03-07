@@ -4,7 +4,7 @@ class Solution {
         int i=0, j=0, maxi=0;
         int n =s.length(); 
         while(i<n && j<n){
-            if(!set.contains(s.charAt(j))){
+            if(!set.contains(s.charAt(j))){ 
                 set.add(s.charAt(j++));
                 maxi = Math.max(maxi, j-i);
             }
